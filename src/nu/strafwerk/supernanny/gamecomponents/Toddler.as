@@ -83,10 +83,16 @@ package nu.strafwerk.supernanny.gamecomponents {
 		}
 
 		public function turnToddler() : void {
-			trace("turnToddler");
+			//trace("turnToddler");
 
 			_container.rotationY = _container.rotationY + 180 + (-5 + Math.random() * 10);
 			_currentMovement = MOVEMENT_AUTO;
+		}
+
+		public function reSpawn():void {
+			_currentMovement = MOVEMENT_AUTO;
+			_container.z = 300;
+			_container.x = -200+Math.random()*400;
 		}
 
 		override public function setSelected(selected : Boolean) : void {

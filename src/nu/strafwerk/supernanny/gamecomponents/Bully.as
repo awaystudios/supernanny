@@ -24,7 +24,6 @@ package nu.strafwerk.supernanny.gamecomponents {
 			_container = new ObjectContainer3D();
 			_container.addChild(_bullyMesh);
 			
-			
 			_vertexAnimator = new VertexAnimator(ShareAssets.instance._bullyAnimations);
 			_bullyMesh.animator = _vertexAnimator;
 			_vertexAnimator.play(ShareAssets.instance._bullyAnimations.animationNames[0], null, 0);

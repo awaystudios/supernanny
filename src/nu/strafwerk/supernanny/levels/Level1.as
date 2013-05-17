@@ -1,4 +1,5 @@
 package nu.strafwerk.supernanny.levels {
+	import nu.strafwerk.supernanny.gamecomponents.LinesParticles;
 	import away3d.containers.Scene3D;
 
 	import nu.strafwerk.supernanny.assets.ShareAssets;
@@ -28,6 +29,7 @@ package nu.strafwerk.supernanny.levels {
 		private var _playsetSlide : PlaysetSlide;
 		
 		private var _physicEngine: PhysicEngine;
+		
 		
 		
 		public function Level1() {
@@ -109,6 +111,9 @@ package nu.strafwerk.supernanny.levels {
 			// position rightmiddle
 			var tree3Thin : TreeThin = new TreeThin(315,-5,16,"tree3thin");
 			_scene.addChild(tree3Thin.mesh);
+
+			linesParticles = new LinesParticles();
+			_scene.addChild(linesParticles.particleMesh1);
 			
 		}
 
@@ -116,8 +121,10 @@ package nu.strafwerk.supernanny.levels {
 		override public function update():void {
 			_playsetCarousel.mesh.rotationY+=1;
 			_playsetSwing.mesh.rotationY+=0.5;
-			_playsetTunnel.mesh.rotationY+=0.5;
+			_playsetTunnel.mesh.rotationY += 0.5;
 		}
+
+
 
 	}
 }

@@ -9,6 +9,7 @@ package nu.strafwerk.supernanny.core {
 	import away3d.debug.AwayStats;
 	import away3d.debug.Trident;
 
+	import nu.strafwerk.supernanny.assets.ShareAssets;
 	import nu.strafwerk.supernanny.utils.SimpleGUI;
 
 	import flash.display.Sprite;
@@ -51,6 +52,8 @@ package nu.strafwerk.supernanny.core {
 		private var _fps:int;
 		
 		protected var _settingsPanel : SimpleGUI;
+		
+		private var instructions : String = "";
 		
 		public function Base3D(fps:int,antiAlias:int=2,showStats:Boolean = true,showSettings:Boolean = true, selectedCamera:int = 0, typeController:int = 0, backgroundColor3D:uint = 0x333333,showTrident:Boolean = true,sizeTrident:int = 500) {
 			_fps = fps;
@@ -140,7 +143,11 @@ package nu.strafwerk.supernanny.core {
 
 		protected function initSettingsPanel() : void
 		{
+			//var displaySpriteSettings:Sprite = new Sprite();
 			_settingsPanel = new SimpleGUI(this, "");
+			//this.addChild(displaySpriteSettings);
+			//displaySpriteSettings.scaleX = 1.5;
+			//displaySpriteSettings.scaleY = 1.5;
 
 			_settingsPanel.addColumn("Show");
 			_settingsPanel.addToggle("toggleStats", {label:"FPS Stats"});
@@ -159,12 +166,19 @@ package nu.strafwerk.supernanny.core {
 			_settingsPanel.addColumn("Quality settings");
 			_settingsPanel.addComboBox("antiAlias", [{label:"none", data:0}, {label:"2x", data:2}, {label:"4x", data:4}, {label:"8x", data:8},], {width:140, defaultLabel:""});
 
+			_settingsPanel.addButton("Add toddler", {callback:addToddler, width:160});
+
 			_settingsPanel.addColumn("Instructions");
-			var instr : String = "";
-			instr += "Supernanny\n";
-			_settingsPanel.addLabel(instr);
+			instructions = "";
+			instructions += "Supernanny\n";
+			_settingsPanel.addLabel(instructions);
 			_settingsPanel.show();
 			_settingsPanel.hide();
+		}
+		
+		private function addToddler():void {
+			ShareAssets.instance.gamelogic.addToddler();
+			//instructions = "Supernanny\n" + ShareAssets.instance.gamelogic.characterObjects.length + " toddlers in game";
 		}
 
 		protected function initStats() : void

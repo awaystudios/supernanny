@@ -65,6 +65,9 @@ package nu.strafwerk.supernanny.assets {
 		private var _materialToddlerGirl : TextureMaterial;
 		[Embed(source="../../../../../embeds/textures/toddler_selected.png")]
 		private var ToddlerSelectedTexture : Class;
+
+
+
 		private var _materialToddlerSelected : TextureMaterial;
 		// private var _toddlerTextureMaterial:TextureMaterial;
 		public var _bullyAnimations : VertexAnimationSet;

@@ -56,7 +56,7 @@ com.powerflasher.fdt.core.mobile.iOS.AVAILABLE.EXTENSIONS=
 com.powerflasher.fdt.core.mobile.iOS.CUSTOM.ADT.CMD.LINE=${package} ${target}  ${connection} ${market} ${signing} ${provision} ${output} ${content} ${icons} ${platformsdk}
 com.powerflasher.fdt.core.mobile.iOS.CUSTOMIZE.ADT.ARGS=true
 com.powerflasher.fdt.core.mobile.iOS.DEPLOY.LOCATION=ipa/Supernanny.ipa
-com.powerflasher.fdt.core.mobile.iOS.DEPLOY.PACKAGE.TYPE=2
+com.powerflasher.fdt.core.mobile.iOS.DEPLOY.PACKAGE.TYPE=1
 com.powerflasher.fdt.core.mobile.iOS.DEPLOY.PRE.PACKAGE.LAUNCHER=Supernanny-Supernanny
 com.powerflasher.fdt.core.mobile.iOS.DEPLOY.SDK.LOCATION=
 com.powerflasher.fdt.core.mobile.iOS.EXTENSIONS.RESOLVE.IOS.SYMBOL.CONFLICTS=false
@@ -72,11 +72,11 @@ com.powerflasher.fdt.core.mobile.iOS.ICON.PATH.58x58=
 com.powerflasher.fdt.core.mobile.iOS.ICON.PATH.72x72=
 com.powerflasher.fdt.core.mobile.iOS.MOBILE.DESCRIPTOR=bin/Supernanny-app.xml
 com.powerflasher.fdt.core.mobile.iOS.PACKAGE.CONTENT=bin/Supernanny-app.xml > Supernanny-app.xml;bin/supernanny.swf > supernanny.swf;bin/uvwBully.jpg > uvwBully.jpg;bin/uvwCarousel.jpg > uvwCarousel.jpg;bin/uvwEntrance.png > uvwEntrance.png;bin/uvwplayground.jpg > uvwplayground.jpg;bin/uvwRopeBridge.jpg > uvwRopeBridge.jpg;bin/uvwSlide.jpg > uvwSlide.jpg;bin/uvwSwing.jpg > uvwSwing.jpg;bin/uvwToddlerBoy.jpg > uvwToddlerBoy.jpg;bin/uvwToddlerGirl.jpg > uvwToddlerGirl.jpg;bin/uvwTree.jpg > uvwTree.jpg;bin/uvwTunnel.jpg > uvwTunnel.jpg;
-com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.CERTIFICATE=provisioncert/ios_dev.p12
+com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.CERTIFICATE=provisioncert/ios_distribution.p12
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.CERTIFICATE.RELEASE=
-com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PROVISIONING.FILE=provisioncert/supernannydevelopment.mobileprovision
+com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PROVISIONING.FILE=provisioncert/supernannygame-adhoc.mobileprovision
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PROVISIONING.FILE.RELEASE=
-com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PWD=9Qv1PzyI1zYdmx2bZQM3/g\=\=
+com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PWD=dB81dhqEO0cHIEE3oRVkOA\=\=
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PWD.RELEASE=HZsdm2UDN/4\=
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.REMEMBER.PWD=true
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.REMEMBER.PWD.RELEASE=false

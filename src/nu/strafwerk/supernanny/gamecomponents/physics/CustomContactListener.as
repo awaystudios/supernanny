@@ -12,14 +12,17 @@ package nu.strafwerk.supernanny.gamecomponents.physics {
 	public class CustomContactListener extends b2ContactListener {
 		
 		private var _gameLogic:Gamelogic;
+		private var fixtureA : b2Fixture;
+		private var fixtureB : b2Fixture;
+		
 		
 		public function CustomContactListener() {
 			
 		}
 		
 		override public function BeginContact(contact:b2Contact):void {
-			var fixtureA : b2Fixture = contact.GetFixtureA();
-			var fixtureB : b2Fixture = contact.GetFixtureB();
+			fixtureA = contact.GetFixtureA();
+			fixtureB = contact.GetFixtureB();
 
 			// If any of the two fixtures doesn't have the user data object then return,
 			// as we need 'hero' and 'oneSidedPlatform' objects only.
@@ -28,16 +31,15 @@ package nu.strafwerk.supernanny.gamecomponents.physics {
 			var nameA : String = UserDataInfo(fixtureA.GetUserData()).name;
 			var gameObjectIdA : int = UserDataInfo(fixtureA.GetUserData()).gameObjectId;
 			
-			var gameObjectIdB : int = UserDataInfo(fixtureB.GetUserData()).gameObjectId;
 			var nameB : String = UserDataInfo(fixtureB.GetUserData()).name;
-			trace(fixtureA.IsSensor(),fixtureB.IsSensor());
+			var gameObjectIdB : int = UserDataInfo(fixtureB.GetUserData()).gameObjectId;
 			
-			// two toddlers crashed make them sit, exclude sensor vs sensor
+			//trace(fixtureA.IsSensor(),fixtureB.IsSensor());
+			
+			// Two toddlers crashed into each other make them sit, exclude sensor vs sensor
 			if 	(!fixtureA.IsSensor() && gameObjectIdA>=0 && gameObjectIdB>=0) {
-				
-				// TODO: active again
-				//Toddler(_gameLogic.characterObjects[gameObjectIdA]).currentMovement = 2;
-				//Toddler(_gameLogic.characterObjects[gameObjectIdB]).currentMovement = 2;	 
+				Toddler(_gameLogic.characterObjects[gameObjectIdA]).currentMovement = 2;
+				Toddler(_gameLogic.characterObjects[gameObjectIdB]).currentMovement = 2;	 
 			}
 
 			// no sensors
@@ -47,22 +49,37 @@ package nu.strafwerk.supernanny.gamecomponents.physics {
 				}
 				else if (gameObjectIdA>=0 || gameObjectIdB>=0) {
 					// toddler vs object
-					trace("toddler vs object");
 					var toddlerIndex:int;
+					
+					// toddler walk into entrance ?
+					var toddlerWalkInEntrance:Boolean = false;
+					
 					if (gameObjectIdA>=0) {
 						toddlerIndex = gameObjectIdA;
+						if (nameB.substring(0,8) == "entrance") {
+							toddlerWalkInEntrance = true;
+						}
 					}
 					else {
+						if (nameA.substring(0,8) == "entrance") {
+							toddlerWalkInEntrance = true;
+						}
 						toddlerIndex = gameObjectIdB;
 					}
-					// turn the toddler
-					Toddler(_gameLogic.characterObjects[toddlerIndex]).turnToddler();
+					
+					if (toddlerWalkInEntrance) {
+						//trace("ENTRANCE!!!");
+						Toddler(_gameLogic.characterObjects[toddlerIndex]).reSpawn();
+					}
+					else {
+						// turn the toddler
+						Toddler(_gameLogic.characterObjects[toddlerIndex]).turnToddler();
+					}
 				}
 			}
 			
-			
-			
 			trace("begincontact A name:", nameA + " gameobjectId:" + gameObjectIdA + " | B name:", nameB + " gameobjectId:" + gameObjectIdB);
+			
 		}
 
 		public function get gameLogic() : Gamelogic {

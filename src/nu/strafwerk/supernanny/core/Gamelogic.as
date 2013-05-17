@@ -91,11 +91,7 @@ package nu.strafwerk.supernanny.core {
 			// Setup toddlers
 			// z = 350 is about the top z=-350 bottom
 			for (var i:int;i<20;i++) {
-				
-				var toddler:Toddler = new Toddler(-350+Math.random()*700, -350+Math.random()*700,12,"toddler"+i.toString(), i, Math.random()*2, false);
-				_scene.addChild(toddler.container);
-				toddler.container.rotationY = Math.random()*360;
-				_characterObjects.push(toddler);
+				addToddler();
 			}
 
 			// setup bully
@@ -103,6 +99,15 @@ package nu.strafwerk.supernanny.core {
 			bully1.container.rotationY = 180;
 			_view.scene.addChild(bully1.container);
 			_characterObjects.push(bully1);
+		}
+		
+		
+		public function addToddler():void {
+				var index:int = _characterObjects.length;  
+				var toddler:Toddler = new Toddler(-350+Math.random()*700, -350+Math.random()*700,10,"toddler"+index.toString(), index, Math.random()*2, false);
+				_scene.addChild(toddler.container);
+				toddler.container.rotationY = Math.random()*360;
+				_characterObjects.push(toddler);
 		}
 
 
@@ -124,6 +129,8 @@ package nu.strafwerk.supernanny.core {
 			_currentSelectedPoint.x = event.scenePosition.x;
 			_currentSelectedPoint.y = event.scenePosition.z;
 			_physicEngine.checkPoint(event.scenePosition.x, event.scenePosition.z);
+			
+			_currentLevel.linesParticles.start(event.scenePosition.x, event.scenePosition.z);
 		}
 
 		/**
@@ -137,10 +144,12 @@ package nu.strafwerk.supernanny.core {
 			//trace("distance:", distance);
 
 			// to avoid recording lots points record based on distance
-			if (distance > 10) {
+			if (distance > 8) {
 				Toddler(characterObjects[_currentSelectedGameObjectId]).userPath.push(new Point(event.scenePosition.x, event.scenePosition.z));
 				_currentSelectedPoint.x = _storePoint.x;
 				_currentSelectedPoint.y = _storePoint.y;
+				
+				_currentLevel.linesParticles.move(event.scenePosition.x, event.scenePosition.z);
 			}
 		}
 
@@ -149,6 +158,9 @@ package nu.strafwerk.supernanny.core {
 		 * Deselect the toddler and movement will be change to PATH 
 		 */	
 		private function onMouseUp(event : MouseEvent3D) : void {
+			
+			_currentLevel.linesParticles.stop();
+			
 			_playground.mesh.removeEventListener(MouseEvent3D.MOUSE_MOVE, onMouseMove);
 			
 			_currentSelectedGameObjectId = -1;

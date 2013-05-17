@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://ns.adobe.com/air/application/3.7">
-  <id>supernanny</id>
-  <versionNumber>1.01</versionNumber>
+  <id>supernanny.game</id>
+  <versionNumber>1.04</versionNumber>
   <filename>supernanny</filename>
   <description />
   <!-- To localize the description, use the following format for the description element.

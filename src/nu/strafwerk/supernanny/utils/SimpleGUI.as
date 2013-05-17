@@ -59,7 +59,7 @@ package nu.strafwerk.supernanny.utils
 		
 		public static const VERSION : Number = 1.03;
 		
-		private static const TOOLBAR_HEIGHT : int = 13;
+		private static const TOOLBAR_HEIGHT : int = 20;
 		private static const COMPONENT_MARGIN : int = 8;		private static const COLUMN_MARGIN : int = 1;		private static const GROUP_MARGIN : int = 1;		private static const PADDING : int = 4;		private static const MARGIN : int = 1;
 		private static const OFFSETX : int = 0;
 		private static const OFFSETY : int = 0;
