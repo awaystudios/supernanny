@@ -1,8 +1,9 @@
 package nu.strafwerk.supernanny.levels {
-	import nu.strafwerk.supernanny.gamecomponents.LinesParticles;
 	import away3d.containers.Scene3D;
 
 	import nu.strafwerk.supernanny.assets.ShareAssets;
+	import nu.strafwerk.supernanny.core.physics.PhysicEngine;
+	import nu.strafwerk.supernanny.gamecomponents.LinesParticles;
 	import nu.strafwerk.supernanny.gamecomponents.Playground;
 	import nu.strafwerk.supernanny.gamecomponents.PlaysetCarousel;
 	import nu.strafwerk.supernanny.gamecomponents.PlaysetCircle;
@@ -13,7 +14,6 @@ package nu.strafwerk.supernanny.levels {
 	import nu.strafwerk.supernanny.gamecomponents.PlaysetTunnel;
 	import nu.strafwerk.supernanny.gamecomponents.TreeThick;
 	import nu.strafwerk.supernanny.gamecomponents.TreeThin;
-	import nu.strafwerk.supernanny.gamecomponents.physics.PhysicEngine;
 
 	/**
 	 * @author admin

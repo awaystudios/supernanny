@@ -6,12 +6,14 @@ package nu.strafwerk.supernanny.assets {
 	import away3d.events.LoaderEvent;
 	import away3d.library.AssetLibrary;
 	import away3d.library.assets.AssetType;
+	import away3d.loaders.misc.AssetLoaderContext;
 	import away3d.loaders.parsers.AWD2Parser;
+	import away3d.loaders.parsers.Parsers;
 	import away3d.materials.TextureMaterial;
-	import away3d.utils.Cast;
+	import away3d.textures.ATFTexture;
 
 	import nu.strafwerk.supernanny.core.Gamelogic;
-	import nu.strafwerk.supernanny.gamecomponents.physics.PhysicEngine;
+	import nu.strafwerk.supernanny.core.physics.PhysicEngine;
 	import nu.strafwerk.supernanny.levels.AbstractLevel;
 
 	import org.osflash.signals.Signal;
@@ -23,12 +25,12 @@ package nu.strafwerk.supernanny.assets {
 		/*
 		 * Assets Singleton
 		 */
-		// 3d model characters
+		// 3D Model Characters
 		[Embed(source="../../../../../embeds/BullyAnimationSet.awd", mimeType="application/octet-stream")]
 		private var Bully : Class;
 		[Embed(source="../../../../../embeds/ToddlerAnimationSet.awd", mimeType="application/octet-stream")]
 		private var Toddler : Class;
-		// 3d model playsets
+		// 3D Model Playsets
 		[Embed(source="../../../../../embeds/playsetCarousel.awd", mimeType="application/octet-stream")]
 		private var PlaysetCarousel : Class;
 		[Embed(source="../../../../../embeds/playsetSlide.awd", mimeType="application/octet-stream")]
@@ -48,28 +50,57 @@ package nu.strafwerk.supernanny.assets {
 		private var TreeThick : Class;
 		[Embed(source="../../../../../embeds/objectTreeThin.awd", mimeType="application/octet-stream")]
 		private var TreeThin : Class;
-		// textures
-		[Embed(source="../../../../../embeds/textures/toddlers1024-2x2.atf", mimeType="application/octet-stream")]
-		private var ToddlersTextureAtf : Class;
-		[Embed(source="../../../../../embeds/textures/playsetcircleactive.png")]
-		private var PlaySetCircleActivePng : Class;
-		private var _materialPlaysetCircleActive : TextureMaterial;
-		[Embed(source="../../../../../embeds/textures/playsetcirclenormal.png")]
-		private var PlaySetCircleNormalPng : Class;
-		private var _materialPlaysetCircleNormal : TextureMaterial;
-		[Embed(source="../../../../../embeds/textures/uvwToddlerBoy.jpg")]
-		private var ToddlerBoyTexture : Class;
-		private var _materialToddlerBoy : TextureMaterial;
-		[Embed(source="../../../../../embeds/textures/uvwToddlerGirl.jpg")]
-		private var ToddlerGirlTexture : Class;
-		private var _materialToddlerGirl : TextureMaterial;
-		[Embed(source="../../../../../embeds/textures/toddler_selected.png")]
-		private var ToddlerSelectedTexture : Class;
-
-
-
+		
+		// ATF Textures
+		[Embed(source="../../../../../embeds/textures/playsetcircleactive.atf", mimeType="application/octet-stream")]
+		private var TexturePlaySetCircleActivePng : Class;
+		[Embed(source="../../../../../embeds/textures/playsetcirclenormal.atf", mimeType="application/octet-stream")]
+		private var TexturePlaySetCircleNormalPng : Class;
+		[Embed(source="../../../../../embeds/textures/uvwToddlerBoy.atf", mimeType="application/octet-stream")]
+		private var TextureToddlerBoy : Class;
+		[Embed(source="../../../../../embeds/textures/uvwToddlerGirl.atf", mimeType="application/octet-stream")]
+		private var TextureToddlerGirl : Class;
+		[Embed(source="../../../../../embeds/textures/toddler_selected.atf", mimeType="application/octet-stream")]
+		private var TextureToddlerSelected : Class;
+		[Embed(source="../../../../../embeds/textures/uvwBully.atf", mimeType="application/octet-stream")]
+		private var TextureBully : Class;
+		[Embed(source="../../../../../embeds/textures/uvwCarousel.atf", mimeType="application/octet-stream")]
+		private var TextureCarousel : Class;
+		[Embed(source="../../../../../embeds/textures/uvwEntrance.atf", mimeType="application/octet-stream")]
+		private var TextureEntrance : Class;
+		[Embed(source="../../../../../embeds/textures/uvwplayground.atf", mimeType="application/octet-stream")]
+		private var TexturePlayground : Class;
+		[Embed(source="../../../../../embeds/textures/uvwRopeBridge.atf", mimeType="application/octet-stream")]
+		private var TextureRopeBridge : Class;
+		[Embed(source="../../../../../embeds/textures/uvwSlide.atf", mimeType="application/octet-stream")]
+		private var TextureSlide : Class;
+		[Embed(source="../../../../../embeds/textures/uvwSwing.atf", mimeType="application/octet-stream")]
+		private var TextureSwing : Class;
+		[Embed(source="../../../../../embeds/textures/uvwTunnel.atf", mimeType="application/octet-stream")]
+		private var TextureTunnel : Class;
+		[Embed(source="../../../../../embeds/textures/uvwTree.atf", mimeType="application/octet-stream")]
+		private var TextureTree : Class;
+		[Embed(source="../../../../../embeds/textures/footstep1.atf", mimeType="application/octet-stream")]
+		public var TextureFootstep1: Class;
+		
+		// texture materials
 		private var _materialToddlerSelected : TextureMaterial;
-		// private var _toddlerTextureMaterial:TextureMaterial;
+		private var _materialPlaysetCircleActive : TextureMaterial;
+		private var _materialPlaysetCircleNormal : TextureMaterial;
+		private var _materialToddlerBoy : TextureMaterial;
+		private var _materialToddlerGirl : TextureMaterial;
+
+		private var _materialBully : TextureMaterial;
+		private var _materialCarousel : TextureMaterial;
+		private var _materialEntrance : TextureMaterial;
+		private var _materialPlayground : TextureMaterial;
+		private var _materialRopeBridge : TextureMaterial;
+		private var _materialSlide : TextureMaterial;
+		private var _materialSwing : TextureMaterial;
+		private var _materialTunnel : TextureMaterial;
+		private var _materialTree : TextureMaterial;
+		
+		// animations
 		public var _bullyAnimations : VertexAnimationSet;
 		public var _toddlerAnimations : VertexAnimationSet;
 		private var _totalToLoadAnimationSets : int = 2;
@@ -120,37 +151,67 @@ package nu.strafwerk.supernanny.assets {
 		public function loadAssets() : void {
 			AssetLibrary.addEventListener(AssetEvent.ASSET_COMPLETE, onAssetComplete);
 			AssetLibrary.addEventListener(LoaderEvent.RESOURCE_COMPLETE, onResourceComplete);
+			
+			Parsers.enableAllBundled();
+			 
+			// TODO: bug: mapping to ATF doesn't work ?
+			// exapmle: assetLoaderContext.mapUrlToData('uvwBully.jpg', new TextureBully() as ATFData);
+
+			var assetLoaderContext : AssetLoaderContext = new AssetLoaderContext();
+			assetLoaderContext.mapUrlToData('uvwToddlerGirl.jpg', TextureToddlerGirl);
+			assetLoaderContext.mapUrlToData('uvwBully.jpg', TextureBully);
+			assetLoaderContext.mapUrlToData('uvwCarousel.jpg', TextureCarousel);
+			assetLoaderContext.mapUrlToData('uvwEntrance.png', TextureEntrance);
+			assetLoaderContext.mapUrlToData('uvwplayground.jpg', TexturePlayground);
+			assetLoaderContext.mapUrlToData('uvwRopeBridge.jpg', TextureRopeBridge  );
+			assetLoaderContext.mapUrlToData('uvwSlide.jpg', TextureSlide  );
+			assetLoaderContext.mapUrlToData('uvwSwing.jpg', TextureSwing );
+			assetLoaderContext.mapUrlToData('uvwTunnel.jpg', TextureTunnel );
+			assetLoaderContext.mapUrlToData('uvwTree.jpg', TextureTree);
 
 			// all kinds
-			AssetLibrary.loadData(new Playground(), null, null, new AWD2Parser());
-			AssetLibrary.loadData(new Entrance(), null, null, new AWD2Parser());
+			AssetLibrary.loadData(new Playground(), assetLoaderContext, null, new AWD2Parser());
+			AssetLibrary.loadData(new Entrance(), assetLoaderContext, null, new AWD2Parser());
 
 			// playsets
-			AssetLibrary.loadData(new PlaysetCarousel(), null, null, new AWD2Parser());
-			AssetLibrary.loadData(new PlaysetSwing(), null, null, new AWD2Parser());
-			AssetLibrary.loadData(new PlaysetSlide(), null, null, new AWD2Parser());
+			AssetLibrary.loadData(new PlaysetCarousel(), assetLoaderContext, null, new AWD2Parser());
+			AssetLibrary.loadData(new PlaysetSwing(), assetLoaderContext, null, new AWD2Parser());
+			AssetLibrary.loadData(new PlaysetSlide(), assetLoaderContext, null, new AWD2Parser());
 
-			AssetLibrary.loadData(new PlaysetRopeBridge(), null, null, new AWD2Parser());
-			AssetLibrary.loadData(new PlaysetTunnel(), null, null, new AWD2Parser());
+			AssetLibrary.loadData(new PlaysetRopeBridge(), assetLoaderContext, null, new AWD2Parser());
+			AssetLibrary.loadData(new PlaysetTunnel(), assetLoaderContext, null, new AWD2Parser());
 
 			// trees
-			AssetLibrary.loadData(new TreeThick(), null, null, new AWD2Parser());
-			AssetLibrary.loadData(new TreeThin(), null, null, new AWD2Parser());
+			AssetLibrary.loadData(new TreeThick(), assetLoaderContext, null, new AWD2Parser());
+			AssetLibrary.loadData(new TreeThin(), assetLoaderContext, null, new AWD2Parser());
 
 			// characters
-			AssetLibrary.loadData(new Bully(), null, null, new AWD2Parser());
-			AssetLibrary.loadData(new Toddler(), null, null, new AWD2Parser());
+			AssetLibrary.loadData(new Bully(), assetLoaderContext, null, new AWD2Parser());
+			
+			
+			AssetLibrary.loadData(new Toddler(), assetLoaderContext, null, new AWD2Parser());
 		}
 
 		private function setupTextures() : void {
-			// _toddlerTextureMaterial = new TextureMaterial(new ATFTexture(new ToddlersTextureAtf()));
-			_materialPlaysetCircleNormal = new TextureMaterial(Cast.bitmapTexture(PlaySetCircleNormalPng));
-			_materialPlaysetCircleActive = new TextureMaterial(Cast.bitmapTexture(PlaySetCircleActivePng));
+			_materialPlaysetCircleNormal = new TextureMaterial(new ATFTexture(new TexturePlaySetCircleNormalPng()));
+			_materialPlaysetCircleActive = new TextureMaterial(new ATFTexture(new TexturePlaySetCircleActivePng()));
 
 			// toddlers
-			_materialToddlerBoy = new TextureMaterial(Cast.bitmapTexture(ToddlerBoyTexture));
-			_materialToddlerGirl = new TextureMaterial(Cast.bitmapTexture(ToddlerGirlTexture));
-			_materialToddlerSelected = new TextureMaterial(Cast.bitmapTexture(ToddlerSelectedTexture));
+			_materialToddlerBoy = new TextureMaterial(new ATFTexture(new TextureToddlerBoy()));
+			_materialToddlerGirl = new TextureMaterial(new ATFTexture(new TextureToddlerGirl()));
+			_materialToddlerSelected = new TextureMaterial(new ATFTexture(new TextureToddlerSelected()));
+			_materialToddlerSelected.bothSides = false;
+
+
+			_materialBully = new TextureMaterial(new ATFTexture(new TextureBully()));
+			_materialCarousel = new TextureMaterial(new ATFTexture(new TextureCarousel()));
+			_materialEntrance = new TextureMaterial(new ATFTexture(new TextureEntrance()));
+			_materialPlayground = new TextureMaterial(new ATFTexture(new TexturePlayground()));
+			_materialRopeBridge = new TextureMaterial(new ATFTexture(new TextureRopeBridge()));
+			_materialSlide = new TextureMaterial(new ATFTexture(new TextureSlide()));
+			_materialSwing = new TextureMaterial(new ATFTexture(new TextureSwing()));
+			_materialTunnel = new TextureMaterial(new ATFTexture(new TextureTunnel()));
+			_materialTree = new TextureMaterial(new ATFTexture(new TextureTree()));
 		}
 
 		// private var _nodeCnt:int = 0;
@@ -170,51 +231,61 @@ package nu.strafwerk.supernanny.assets {
 					case "bully": {
 						trace("complete bully");
 						_dictMesh["bully"] = Mesh(event.asset);
+						_dictMesh["bully"].material = _materialBully;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "Playground": {
 						_dictMesh["Playground"] = Mesh(event.asset);
+						_dictMesh["Playground"].material = _materialPlayground;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "carousel": {
 						_dictMesh["carousel"] = Mesh(event.asset);
+						_dictMesh["carousel"].material = _materialCarousel;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "swing": {
 						_dictMesh["swing"] = Mesh(event.asset);
+						_dictMesh["swing"].material = _materialSwing;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "treeThick": {
 						_dictMesh["treeThick"] = Mesh(event.asset);
+						_dictMesh["treeThick"].material = _materialTree;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "treeThin": {
 						_dictMesh["treeThin"] = Mesh(event.asset);
+						_dictMesh["treeThin"].material = _materialTree;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "slide": {
 						_dictMesh["slide"] = Mesh(event.asset);
+						_dictMesh["slide"].material = _materialSlide;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "ropeBridge": {
 						_dictMesh["ropeBridge"] = Mesh(event.asset);
+						_dictMesh["ropeBridge"].material = _materialRopeBridge; 
 						_loadedMeshes += 1;
 						break;
 					}
 					case "tunnel": {
 						_dictMesh["tunnel"] = Mesh(event.asset);
+						_dictMesh["tunnel"].material = _materialTunnel;
 						_loadedMeshes += 1;
 						break;
 					}
 					case "entrance": {
 						_dictMesh["entrance"] = Mesh(event.asset);
+						_dictMesh["entrance"].material = _materialEntrance;
 						_loadedMeshes += 1;
 						break;
 					}

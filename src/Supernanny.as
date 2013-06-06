@@ -1,8 +1,8 @@
 package {
-	import nu.strafwerk.supernanny.core.Gamelogic;
 	import nu.strafwerk.supernanny.assets.ShareAssets;
 	import nu.strafwerk.supernanny.core.Base3D;
-	import nu.strafwerk.supernanny.gamecomponents.physics.PhysicEngine;
+	import nu.strafwerk.supernanny.core.Gamelogic;
+	import nu.strafwerk.supernanny.core.physics.PhysicEngine;
 	import nu.strafwerk.supernanny.levels.AbstractLevel;
 	import nu.strafwerk.supernanny.levels.Level1;
 
@@ -51,6 +51,7 @@ package {
 			ShareAssets.instance.onAnimationSetsLoaded.remove(initAssetsLoaded);
 
 			initPhysics();
+			if (showSettings) {initSettingsPanel();}
 			setupGameLevel();
 
 			_gameLogic = new Gamelogic();
@@ -82,6 +83,8 @@ package {
 			_view.height = stage.stageHeight;
 			_view.x = (stage.stageWidth - _view.width) * 0.5;
 			_view.y = (stage.stageHeight - _view.height) * 0.5;
+			fpsStats.x = 10;
+			fpsStats.y = stage.stageHeight - fpsStats.height - 10;
 		}
 	}
 }

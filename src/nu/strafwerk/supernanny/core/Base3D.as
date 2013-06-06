@@ -74,7 +74,7 @@ package nu.strafwerk.supernanny.core {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			setupStage();			
 			setup3DEngine();
-			if (_showSettings) { initSettingsPanel(); }
+			//if (_showSettings) { initSettingsPanel(); }
 			if (_showStats) { initStats(); }
 		}
 
@@ -163,10 +163,12 @@ package nu.strafwerk.supernanny.core {
 			_settingsPanel.addSlider("cameraZ", -2000, 2000, {label:"CamZ", tick:25});
 			
 
-			_settingsPanel.addColumn("Quality settings");
+			_settingsPanel.addColumn("Settings");
 			_settingsPanel.addComboBox("antiAlias", [{label:"none", data:0}, {label:"2x", data:2}, {label:"4x", data:4}, {label:"8x", data:8},], {width:140, defaultLabel:""});
 
 			_settingsPanel.addButton("Add toddler", {callback:addToddler, width:160});
+
+			_settingsPanel.addToggle("togglePhysics", {label:"Physics"});
 
 			_settingsPanel.addColumn("Instructions");
 			instructions = "";
@@ -271,6 +273,17 @@ package nu.strafwerk.supernanny.core {
 			_view.camera = _cameras[_selectedCamera];
 		}
 
+
+
+		public function set togglePhysics(value : Boolean) : void {
+			ShareAssets.instance.physicEngine.usePhysics = value;
+		}
+
+		public function get togglePhysics() : Boolean {
+			return ShareAssets.instance.physicEngine.usePhysics;
+		}
+
+
 		public function set toggleStats(value : Boolean) : void {
 			_showStats = value;
 			if (_showStats)
@@ -319,6 +332,22 @@ package nu.strafwerk.supernanny.core {
 
 		public function set hoverController(hoverController : HoverController) : void {
 			_hoverController = hoverController;
+		}
+
+		public function get fpsStats() : AwayStats {
+			return _fpsStats;
+		}
+
+		public function set fpsStats(fpsStats : AwayStats) : void {
+			_fpsStats = fpsStats;
+		}
+
+		public function get showSettings() : Boolean {
+			return _showSettings;
+		}
+
+		public function set showSettings(showSettings : Boolean) : void {
+			_showSettings = showSettings;
 		}
 
 	}

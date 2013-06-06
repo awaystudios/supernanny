@@ -1,5 +1,23 @@
-png2atf -c -i bully1024_2x2.png -o bully1024_2x2.atf
-png2atf -c -i toddlers1024-2x2.png -o toddlers1024-2x2.atf
+png2atf -c -i orginalspng/footstep1.png -o footstep1.atf
+png2atf -c -i orginalspng/playsetcircleactive.png -o playsetcircleactive.atf
+png2atf -c -i orginalspng/playsetcirclenormal.png -o playsetcirclenormal.atf
+png2atf -c -i orginalspng/toddler_selected.png -o toddler_selected.atf
+png2atf -c -i orginalspng/uvwToddlerBoy.png -o uvwToddlerBoy.atf
+png2atf -c -i orginalspng/uvwToddlerGirl.png -o uvwToddlerGirl.atf
+
+png2atf -c -i orginalspng/uvwBully.png -o uvwBully.atf
+png2atf -c -i orginalspng/uvwCarousel.png -o uvwCarousel.atf
+png2atf -c -i orginalspng/uvwEntrance.png -o uvwEntrance.atf
+png2atf -c -i orginalspng/uvwplayground.png -o uvwplayground.atf
+png2atf -c -i orginalspng/uvwRopeBridge.png -o uvwRopeBridge.atf
+png2atf -c -i orginalspng/uvwSlide.png -o uvwSlide.atf
+png2atf -c -i orginalspng/uvwSwing.png -o uvwSwing.atf
+png2atf -c -i orginalspng/uvwTree.png -o uvwTree.atf
+png2atf -c -i orginalspng/uvwTunnel.png -o uvwTunnel.atf
+
+
+:: png2atf -c -i bully1024_2x2.png -o bully1024_2x2.atf
+:: png2atf -c -i toddlers1024-2x2.png -o toddlers1024-2x2.atf
 
 :: ==========================================
 :: Ref: http://away3d.com/tutorials/Introduction_to_ATF_Textures and docs

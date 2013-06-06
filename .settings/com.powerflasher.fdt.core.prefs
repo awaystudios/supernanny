@@ -33,30 +33,30 @@ com.powerflasher.fdt.core.mobile.AirDesktop.SIGNATURE.CERTIFICATE=
 com.powerflasher.fdt.core.mobile.AirDesktop.SIGNATURE.PWD=HZsdm2UDN/4\=
 com.powerflasher.fdt.core.mobile.AirDesktop.SIGNATURE.REMEMBER.PWD=false
 com.powerflasher.fdt.core.mobile.AirDesktop.SWFPATH=
-com.powerflasher.fdt.core.mobile.Android.ACTIVE=false
+com.powerflasher.fdt.core.mobile.Android.ACTIVE=true
 com.powerflasher.fdt.core.mobile.Android.AVAILABLE.EXTENSIONS=
 com.powerflasher.fdt.core.mobile.Android.CUSTOM.ADT.CMD.LINE=${package} ${target} ${connection} ${special} ${market} ${signing} ${provision} ${output} ${content} ${icons} ${platformsdk}
 com.powerflasher.fdt.core.mobile.Android.CUSTOMIZE.ADT.ARGS=false
-com.powerflasher.fdt.core.mobile.Android.DEPLOY.EXPORT.CAPTIVE=false
+com.powerflasher.fdt.core.mobile.Android.DEPLOY.EXPORT.CAPTIVE=true
 com.powerflasher.fdt.core.mobile.Android.DEPLOY.INSTALL.CHECK=false
-com.powerflasher.fdt.core.mobile.Android.DEPLOY.LOCATION=
+com.powerflasher.fdt.core.mobile.Android.DEPLOY.LOCATION=export/apk/supernanny.apk
 com.powerflasher.fdt.core.mobile.Android.DEPLOY.MARKET.INDEX=0
-com.powerflasher.fdt.core.mobile.Android.DEPLOY.PRE.PACKAGE.LAUNCHER=\ -- No adequate launcher found\! -- 
+com.powerflasher.fdt.core.mobile.Android.DEPLOY.PRE.PACKAGE.LAUNCHER=Supernanny-Supernanny
 com.powerflasher.fdt.core.mobile.Android.ICON.PATH.36x36=
 com.powerflasher.fdt.core.mobile.Android.ICON.PATH.48x48=
 com.powerflasher.fdt.core.mobile.Android.ICON.PATH.72x72=
 com.powerflasher.fdt.core.mobile.Android.MOBILE.DESCRIPTOR=bin/Supernanny-app.xml
 com.powerflasher.fdt.core.mobile.Android.PACKAGE.CONTENT=bin/Supernanny-app.xml > Supernanny-app.xml;bin/supernanny.swf > supernanny.swf;
-com.powerflasher.fdt.core.mobile.Android.SIGNATURE.CERTIFICATE=
-com.powerflasher.fdt.core.mobile.Android.SIGNATURE.PWD=HZsdm2UDN/4\=
+com.powerflasher.fdt.core.mobile.Android.SIGNATURE.CERTIFICATE=provisioncert/andriod_signature.p12
+com.powerflasher.fdt.core.mobile.Android.SIGNATURE.PWD=dB81dhqEO0cHIEE3oRVkOA\=\=
 com.powerflasher.fdt.core.mobile.Android.SIGNATURE.REMEMBER.PWD=false
 com.powerflasher.fdt.core.mobile.Android.SWFPATH=
 com.powerflasher.fdt.core.mobile.iOS.ACTIVE=true
 com.powerflasher.fdt.core.mobile.iOS.AVAILABLE.EXTENSIONS=
-com.powerflasher.fdt.core.mobile.iOS.CUSTOM.ADT.CMD.LINE=${package} ${target}  ${connection} ${market} ${signing} ${provision} ${output} ${content} ${icons} ${platformsdk}
+com.powerflasher.fdt.core.mobile.iOS.CUSTOM.ADT.CMD.LINE=${package} ${target} ${connection} ${market} ${signing} ${provision} ${output} ${content} ${icons} ${platformsdk}
 com.powerflasher.fdt.core.mobile.iOS.CUSTOMIZE.ADT.ARGS=true
 com.powerflasher.fdt.core.mobile.iOS.DEPLOY.LOCATION=ipa/Supernanny.ipa
-com.powerflasher.fdt.core.mobile.iOS.DEPLOY.PACKAGE.TYPE=1
+com.powerflasher.fdt.core.mobile.iOS.DEPLOY.PACKAGE.TYPE=0
 com.powerflasher.fdt.core.mobile.iOS.DEPLOY.PRE.PACKAGE.LAUNCHER=Supernanny-Supernanny
 com.powerflasher.fdt.core.mobile.iOS.DEPLOY.SDK.LOCATION=
 com.powerflasher.fdt.core.mobile.iOS.EXTENSIONS.RESOLVE.IOS.SYMBOL.CONFLICTS=false
@@ -71,10 +71,10 @@ com.powerflasher.fdt.core.mobile.iOS.ICON.PATH.57x57=
 com.powerflasher.fdt.core.mobile.iOS.ICON.PATH.58x58=
 com.powerflasher.fdt.core.mobile.iOS.ICON.PATH.72x72=
 com.powerflasher.fdt.core.mobile.iOS.MOBILE.DESCRIPTOR=bin/Supernanny-app.xml
-com.powerflasher.fdt.core.mobile.iOS.PACKAGE.CONTENT=bin/Supernanny-app.xml > Supernanny-app.xml;bin/supernanny.swf > supernanny.swf;bin/uvwBully.jpg > uvwBully.jpg;bin/uvwCarousel.jpg > uvwCarousel.jpg;bin/uvwEntrance.png > uvwEntrance.png;bin/uvwplayground.jpg > uvwplayground.jpg;bin/uvwRopeBridge.jpg > uvwRopeBridge.jpg;bin/uvwSlide.jpg > uvwSlide.jpg;bin/uvwSwing.jpg > uvwSwing.jpg;bin/uvwToddlerBoy.jpg > uvwToddlerBoy.jpg;bin/uvwToddlerGirl.jpg > uvwToddlerGirl.jpg;bin/uvwTree.jpg > uvwTree.jpg;bin/uvwTunnel.jpg > uvwTunnel.jpg;
+com.powerflasher.fdt.core.mobile.iOS.PACKAGE.CONTENT=bin/Supernanny-app.xml > Supernanny-app.xml;bin/supernanny.swf > supernanny.swf;
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.CERTIFICATE=provisioncert/ios_distribution.p12
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.CERTIFICATE.RELEASE=
-com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PROVISIONING.FILE=provisioncert/supernannygame-adhoc.mobileprovision
+com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PROVISIONING.FILE=provisioncert/supernannygame.mobileprovision
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PROVISIONING.FILE.RELEASE=
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PWD=dB81dhqEO0cHIEE3oRVkOA\=\=
 com.powerflasher.fdt.core.mobile.iOS.SIGNATURE.PWD.RELEASE=HZsdm2UDN/4\=
