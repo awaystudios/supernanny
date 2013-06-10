@@ -1,4 +1,6 @@
 package nu.strafwerk.supernanny.core {
+	import com.bit101.components.Component;
+	import com.bit101.components.Label;
 	import away3d.cameras.Camera3D;
 	import away3d.cameras.lenses.OrthographicLens;
 	import away3d.cameras.lenses.PerspectiveLens;
@@ -53,7 +55,10 @@ package nu.strafwerk.supernanny.core {
 		
 		protected var _settingsPanel : SimpleGUI;
 		
+		private var _totalToddlers:int=1;
+		
 		private var instructions : String = "";
+		private var _instructionsCom:Component;
 		
 		public function Base3D(fps:int,antiAlias:int=2,showStats:Boolean = true,showSettings:Boolean = true, selectedCamera:int = 0, typeController:int = 0, backgroundColor3D:uint = 0x333333,showTrident:Boolean = true,sizeTrident:int = 500) {
 			_fps = fps;
@@ -170,17 +175,22 @@ package nu.strafwerk.supernanny.core {
 
 			_settingsPanel.addToggle("togglePhysics", {label:"Physics"});
 
-			_settingsPanel.addColumn("Instructions");
+			//_settingsPanel.addColumn("Instructions");
 			instructions = "";
-			instructions += "Supernanny\n";
-			_settingsPanel.addLabel(instructions);
+			instructions = "Supernanny\n" + 1 + " toddler in game ";
+
+		 	_instructionsCom = _settingsPanel.addControl(Label, {text : instructions});
+			
+			//_settingsPanel.addLabel(instructions);
 			_settingsPanel.show();
 			_settingsPanel.hide();
 		}
 		
 		private function addToddler():void {
 			ShareAssets.instance.gamelogic.addToddler();
-			//instructions = "Supernanny\n" + ShareAssets.instance.gamelogic.characterObjects.length + " toddlers in game";
+			_totalToddlers+=1;
+			instructions = "Supernanny\n" + _totalToddlers + " toddlers in game";
+			Label(_instructionsCom).text  = instructions;
 		}
 
 		protected function initStats() : void

@@ -15,7 +15,7 @@
 <stringAttribute key="LAUNCHER_DEPENDENCIES" value="[Self]"/>
 <intAttribute key="LAUNCH_METHOD" value="0"/>
 <stringAttribute key="MAIN_CLASS" value="src/Supernanny.as"/>
-<stringAttribute key="MOBILE_PRESET" value="ASUS Eee Pad Transformer"/>
+<stringAttribute key="MOBILE_PRESET" value="Samsung Galaxy Tab 10.1"/>
 <intAttribute key="PACKAGE_METHOD" value="0"/>
 <booleanAttribute key="PASS_CP" value="true"/>
 <booleanAttribute key="PASS_EXTERNS" value="true"/>

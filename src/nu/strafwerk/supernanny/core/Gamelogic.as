@@ -72,7 +72,7 @@ package nu.strafwerk.supernanny.core {
 
 		private function frameLoop(event : Event) : void {
 			updateCharacters();
-			_currentLevel.update();
+			//_currentLevel.update();
 			_physicEngine.update();
 			
 			_currentLevel.linesParticles.updateDrawPoint();
